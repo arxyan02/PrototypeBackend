@@ -1,5 +1,6 @@
-FROM openjdk:17
+FROM maven:3.8.5-openjdk-17
 WORKDIR /app
-COPY ./target/prototypebackend.jar /app
+COPY . .
+RUN mvn clean install -DskipTests
 EXPOSE 8080
-CMD ["java", "-jar", "prototypebackend.jar"]
+CMD mvn spring-boot:run
